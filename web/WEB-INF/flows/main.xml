@@ -7,12 +7,17 @@
     <var name="user" class="ru.codegan.spring.model.User"/>
     <view-state id="auth" view="auth" model="user">
         <transition on="submit" to="actionCheckLogin"/>
+        <transition on="gocreate" to="create"/>
     </view-state>
     <action-state id="actionCheckLogin">
         <evaluate expression="userService.checkUser(user)"/>
         <transition on="goindex" to="index"/>
         <transition on="failed" to="auth"/>
     </action-state>
-
     <view-state id="index" view="index"/>
+    <subflow-state id="create" subflow="create-user">
+        <input name="user"/>
+        <transition on="createdUser" to="auth"/>
+        <transition on="cancelled" to="auth"/>
+    </subflow-state>
 </flow>
