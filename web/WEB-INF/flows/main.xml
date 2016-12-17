@@ -11,8 +11,10 @@
     </view-state>
     <action-state id="actionCheckLogin">
         <evaluate expression="userService.checkUser(user)"/>
-        <transition on="goindex" to="index"/>
-        <transition on="failed" to="auth"/>
+        <transition on="yes" to="index"/>
+        <transition on="no" to="auth">
+            <set name="flashScope.message" value="'ощибка!'"/>
+        </transition>
     </action-state>
     <view-state id="index" view="index"/>
     <subflow-state id="create" subflow="create-user">

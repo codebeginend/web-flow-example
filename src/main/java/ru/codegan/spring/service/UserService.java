@@ -16,13 +16,11 @@ public class UserService {
     public UserService(){
         usersList.add(new User("user", "pass"));
     }
-    public String checkUser(User user){
-            for(User ifuser : usersList){
-            if(ifuser.equals(user)){
-                return "goindex";
+    public Boolean checkUser(User user){
+            if(usersList.contains(user)){
+                return true;
             }
-        }
-        return "failed";
+        return false;
     }
     public void createUser(User user){
         usersList.add(user);

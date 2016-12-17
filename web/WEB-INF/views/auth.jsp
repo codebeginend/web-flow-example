@@ -21,6 +21,9 @@
         Password
     </form:label>
     <form:input path="Password"/>
+    <c:if test="${not empty message}">
+        <span>${message}</span>
+    </c:if>
     <input type="submit" value="login" name="_eventId_submit"/>
 </form:form>
 <a href="${flowExecutionUrl}&_eventId=gocreate">Registration</a>
